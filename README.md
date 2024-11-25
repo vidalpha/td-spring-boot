@@ -6,3 +6,4 @@ Steps :
 * Création des entités
 * Installation de H2
 * Création du repository
+* Création des services

@@ -12,34 +12,34 @@ import java.util.List;
 @AllArgsConstructor
 public class EtudiantServiceImpl implements IEtudiantService {
 
-    private final IEtudiantRepository etudiantRepository;
+    private final IEtudiantRepository iEtudiantRepository;
 
 
     @Override
     public Etudiant insert(Etudiant etudiant) {
-        return etudiantRepository.save(etudiant);
+        return iEtudiantRepository.save(etudiant);
     }
 
     @Override
     public List<Etudiant> list() {
-        return etudiantRepository.findAll();
+        return iEtudiantRepository.findAll();
     }
 
     @Override
     public Etudiant update(Long id, Etudiant etudiant) {
-        return etudiantRepository.findById(id)
+        return iEtudiantRepository.findById(id)
                 .map(e -> {
                     e.setNom(etudiant.getNom());
                     e.setPrenom(etudiant.getPrenom());
                     e.setMatricule(etudiant.getMatricule());
                     e.setMasterType(etudiant.getMasterType());
-                    return etudiantRepository.save(etudiant);
+                    return iEtudiantRepository.save(etudiant);
                 }).orElseThrow(()-> new RuntimeException("Etudiant inconnu"));
     }
 
     @Override
     public Boolean delete(Long id) {
-        etudiantRepository.deleteById(id);
+        iEtudiantRepository.deleteById(id);
         return true;
     }
 }

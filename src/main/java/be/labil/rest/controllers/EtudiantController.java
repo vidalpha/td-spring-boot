@@ -1,5 +1,6 @@
 package be.labil.rest.controllers;
 
+import be.labil.rest.domain.dtos.EtudiantDto;
 import be.labil.rest.domain.entities.Etudiant;
 import be.labil.rest.services.interfaces.IEtudiantService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,7 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Tag(name = "Etudiant", description = "L'api des étudiants")
 @RestController
@@ -31,13 +32,13 @@ public class EtudiantController {
             @ApiResponse(responseCode = "200", description = "Opération réussie")
     })
     @GetMapping(value="/list", produces="application/json")
-    List<Etudiant> read(){
+    Set<EtudiantDto> read(){
         return iEtudiantService.list();
     }
 
     @PutMapping(value = "/update/{id}", produces = "application/json")
-    Etudiant update(@PathVariable Long id, @RequestBody Etudiant etudiant){
-        return iEtudiantService.update(id, etudiant);
+    EtudiantDto update(@PathVariable Long id, @RequestBody EtudiantDto etudiantDto){
+        return iEtudiantService.update(id, etudiantDto);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -7,3 +7,5 @@ Steps :
 * Installation de H2
 * Création du repository
 * Création des services
+* Création des controllers
+* Ajout de Mapstruct et création d'un DTO

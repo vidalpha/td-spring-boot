@@ -6,11 +6,13 @@ import be.labil.rest.domain.mappers.IEtudiantMapper;
 import be.labil.rest.repositories.interfaces.IEtudiantRepository;
 import be.labil.rest.services.interfaces.IEtudiantService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class EtudiantServiceImpl implements IEtudiantService {
@@ -40,6 +42,8 @@ public class EtudiantServiceImpl implements IEtudiantService {
                 e.setMatricule(etudiantDto.getMatricule());
                 // Sauvegarder l'entité mise à jour
                 Etudiant updatedEtudiant = iEtudiantRepository.save(e);
+
+                log.warn("Mise à jour de l'étudiant {} effectué avec succès", etudiantDto.getMatricule());
 
                 // Convertir l'entité mise à jour en DTO et retourner
                 return iEtudiantMapper.toDto(updatedEtudiant);

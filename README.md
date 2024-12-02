@@ -9,3 +9,4 @@ Steps :
 * Création des services
 * Création des controllers
 * Ajout de Mapstruct et création d'un DTO
+* Ajout du log avec Sl4J et logback
